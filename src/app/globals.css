@@ -6,14 +6,16 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --header-bg: #3b3838;
+  --header-font-color: #ffffff;
+  --content-bg: #ffffff;
+  --box-bg: #f2f2f2;
+  --button-bg: #ef3e42;
+  --button-color: #ffffff;
+  --progress-bar: #ef3e42;
+  --progress-meter: #ffffff;
+  --error-bg: #ef3e42;
+  --error-color: #FFFFFF;
 }
 
 body {
@@ -24,4 +26,129 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  background-color: var(--header-bg);
+  padding: 24px 50px;
+  width: 100%;
+}
+
+.content {
+  background-color: var(--content-bg);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 50px 160px;
+  width: 100%;
+}
+
+.logo-text {
+  color: var(--header-font-color);
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.question {
+  padding: 20px;
+  background-color: var(--box-bg);
+  outline: none;
+  resize: none;
+  width: 100%;
+}
+
+.button {
+  align-items: center;
+  background-color: var(--button-bg);
+  border-radius: 2px;
+  color: var(--button-color);
+  display: flex;
+  justify-content: center;
+  min-height: 51px;
+  padding: 5px 25px;
+  text-transform: uppercase;
+}
+
+.button:disabled {
+  opacity: 50%;
+  cursor: not-allowed;
+}
+
+.actions-container {
+  margin-top: 40px;
+}
+
+.state-container {
+  align-items: center;
+  background-color: var(--box-bg);
+  display: flex;
+  height: 280px;
+  justify-content: center;
+  width: 100%;
+}
+
+.state-wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.progress-bar {
+  background-color: var(--progress-meter);
+  border-radius: 8px;
+  height: 20px;
+  width: 200px;
+}
+
+.progress-meter {
+  background-color: var(--progress-bar);
+  border-radius: 8px;
+  height: 100%;
+  width: 0%;
+  animation: 5s infinite progress;
+}
+
+.state-message {
+  margin-top: 20px;
+}
+
+.error-sign {
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 85px solid var(--error-bg);
+  height: 0;
+  position: relative;
+  width: 0;
+}
+.error-sign::after {
+  color: var(--error-color);
+  content: "!";
+  font-size: 40px;
+  font-weight: bold;
+  position: absolute;
+  left: 50%;
+  top: 25px;
+  transform: translateX(-50%);
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  25% {
+    width: 25%;
+  }
+  50% {
+    width: 50%;
+  }
+  75% {
+    width: 75%;
+  }
+  100% {
+    width: 100%;
+  }
 }
