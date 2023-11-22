@@ -9,6 +9,14 @@ export default function Home() {
 
   const handleTextarea = (e: any) => setQuestion(e.target.value);
 
+  const sanitize = (string: string) => {
+    string = string.replace(/['"’‘“”]/g, '');
+    if (string[string.length - 1] === '.') {
+      string = string.slice(0, -1);
+    }
+    return string;
+  } 
+
   const generateAnswer = async (event: any) => {
     setStep(1);
     setDisabled(true);
@@ -16,7 +24,7 @@ export default function Home() {
     myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({
-      question: question,
+      question: sanitize(question),
     });
 
     var requestOptions: RequestInit = {
@@ -35,8 +43,8 @@ export default function Home() {
       myHeaders.append("Content-Type", "application/json");
 
       var raw = JSON.stringify({
-        file_name: question.slice(0, 20),
-        file_contents: `${question}\n\n${answer}`,
+        file_name: sanitize(question).slice(0, 20),
+        file_contents: `${sanitize(question)}\n\n${answer}`,
       });
 
       var requestOptions: RequestInit = {
@@ -122,6 +130,31 @@ export default function Home() {
               </div>
             </div>
           )}
+
+          <div className="future-actions-container">
+            <button className="button upload" disabled >
+              upload client data
+            <Image
+              src="/file.svg"
+              alt="Upload client data"
+              className="button-icon"
+              width={25}
+              height={25}
+              priority
+            />
+            </button>
+            <button className="button" disabled>
+              add bid constraints
+            <Image
+              src="/chevron.svg"
+              alt="add bid constraints"
+              className="button-icon"
+              width={25}
+              height={25}
+              priority
+            />
+            </button>
+          </div>
 
           <div className="actions-container">
             <button className="button" disabled={disabled} onClick={generateAnswer}>

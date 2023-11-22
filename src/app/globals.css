@@ -71,12 +71,25 @@ body {
   text-transform: uppercase;
 }
 
+.button.upload {
+  margin-right: 40px;
+}
+
+.button-icon {
+  margin-left: 8px;
+}
+
 .button:disabled {
   opacity: 50%;
   cursor: not-allowed;
 }
 
 .actions-container {
+  margin-top: 70px;
+}
+
+.future-actions-container {
+  display: flex;
   margin-top: 40px;
 }
 
