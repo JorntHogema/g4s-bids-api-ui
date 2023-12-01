@@ -2,6 +2,8 @@ name: Build and Push Python Image to Google Cloud Platform
 on:
   push:
     branches: [ main ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 jobs:
   build-push-gcr:
     name: Build and Push to GCP
