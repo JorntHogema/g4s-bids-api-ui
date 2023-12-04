@@ -92,7 +92,7 @@ export default function Home() {
             <span className="logo-text">
               Bids
               <br />
-              Agent
+              AI Assistant
             </span>
           </a>
         </div>
@@ -103,7 +103,7 @@ export default function Home() {
               id=""
               rows={10}
               className="question"
-              placeholder="Type here to ask the Agent a question…"
+              placeholder="How can I help you?"
               onChange={handleTextarea}
               value={question}
             ></textarea>
@@ -115,7 +115,7 @@ export default function Home() {
                   <div className="progress-meter"></div>
                 </div>
                 <div className="state-message">
-                  Please Wait, the Agent is preparing an answer…
+                  Please Wait, the AI Assistant is preparing an answer…
                 </div>
               </div>
             </div>
