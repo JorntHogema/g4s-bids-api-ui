@@ -35,7 +35,7 @@ export default function Home() {
     };
     try {
       const response = await fetch(
-        "http://34.105.134.24:8080/api/bid/answer/question",
+        "https://g4s-bids.g4s.com/api/bid/answer/question",
         requestOptions
       );
       const { answer } = await response.json();
@@ -55,7 +55,7 @@ export default function Home() {
       };
 
       const fileResponse = await fetch(
-        "http://34.105.134.24:8080/api/bid/save",
+        "https://g4s-bids.g4s.com/api/bid/save",
         requestOptions
       );
       const { location }: {location: string}  = await fileResponse.json();
