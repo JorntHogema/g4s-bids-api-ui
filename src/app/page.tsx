@@ -35,7 +35,7 @@ export default function Home() {
     };
     try {
       const response = await fetch(
-        "https://g4s-bids.g4s.com/api/bid/answer/question",
+        "https://bids-app.g4s.com/api/bid/answer/question",
         requestOptions
       );
       const { answer } = await response.json();
@@ -55,7 +55,7 @@ export default function Home() {
       };
 
       const fileResponse = await fetch(
-        "https://g4s-bids.g4s.com/api/bid/save",
+        "https://bids-app.g4s.com/api/bid/save",
         requestOptions
       );
       const { location }: {location: string}  = await fileResponse.json();
